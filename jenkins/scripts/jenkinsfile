@@ -1,0 +1,47 @@
+pipeline{
+    agent any 
+     tools { 
+        maven 'Maven' 
+    }
+
+    stages{
+        stage("project-maven-test"){
+            steps{
+                sh  ' mvn test '
+                echo "========executing A========"
+            }
+            
+            }
+            stage("project-maven-build"){
+            steps{
+                sh 'mvn package'
+                echo "========executing A========"
+            }
+            
+            }
+            stage("building docker image"){
+            steps{
+                
+                script{
+
+                sh   'docker build -t lakshit45/im . '
+
+                }
+                 
+            }
+            
+            }
+        }
+    }
+    post{
+        always{
+            echo "========always========"
+        }
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        failure{
+            echo "========pipeline execution failed========"
+        }
+    }
+}
