@@ -8,14 +8,14 @@ pipeline{
         stage("project-maven-test"){
             steps{
                 sh  ' mvn test '
-                echo "========executing A========"
+                
             }
             
             }
             stage("project-maven-build"){
             steps{
                 sh 'mvn package'
-                echo "========executing A========"
+                
             }
             
             }
@@ -24,7 +24,20 @@ pipeline{
                 
                 script{
 
-                sh   'docker build -t lakshit45/im . '
+                sh   'docker build -t lakshit45/img . '
+
+                }
+                 
+            }
+            
+            }
+            
+            stage("building docker image"){
+            steps{
+                
+                script{
+                sh ' docker login -u lakshit45 -p sslakshit45
+                sh   'docker push  lakshit45/img '
 
                 }
                  
