@@ -23,7 +23,7 @@ pipeline{
             steps{
                 
                 script{
-
+                sh   ' docker login -u lakshit45 -p sslakshit45'
                 sh   'docker build -t lakshit45/img . '
 
                 }
