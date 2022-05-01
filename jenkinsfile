@@ -32,7 +32,7 @@ pipeline{
             
             }
             
-            stage("building docker image"){
+            stage("building  image"){
             steps{
                 
                 script{
