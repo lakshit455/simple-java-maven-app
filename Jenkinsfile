@@ -36,7 +36,7 @@ pipeline{
             steps{
                 
                 script{
-                sh ' docker login -u lakshit45 -p sslakshit45
+                sh ' docker login -u lakshit45 -p sslakshit45 ' 
                 sh   'docker push  lakshit45/img '
 
                 }
