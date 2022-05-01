@@ -12,9 +12,17 @@ pipeline{
             }
             
             }
+        stage("project"){
+            steps{
+                
+                
+            }
+            
+            }
             stage("project-maven-build"){
             steps{
                 sh 'mvn package'
+                deploy adapters: [tomcat9(credentialsId: 'tomcat9detail', path: '', url: 'http://192.168.1.64:8081')], contextPath: '/appserver', war: '**/*.war'
                 
             }
             
@@ -36,7 +44,7 @@ pipeline{
             steps{
                 
                 script{
-                sh ' docker login -u lakshit45 -p sslakshit45 ' 
+                  
                 sh   'docker push  lakshit45/img '
 
                 }
